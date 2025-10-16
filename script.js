@@ -252,7 +252,7 @@ function randomAirportQuestion() {
   return {
     prompt: `What is the location for code: ${item.Code}?`,
     answer: item.Location.trim().toLowerCase(),
-    notes: 'None'
+    notes: ''
   };
 }
 
@@ -289,7 +289,7 @@ function submitAnswer() {
     document.getElementById('feedback').textContent = `✅ Correct!`;
     document.getElementById('feedback').style.color = "green";
   } else {
-    document.getElementById('feedback').textContent = `❌ Wrong. Correct: ${currentQuestion.answer} ------ Note: ${currentQuestion.notes}`;
+    document.getElementById('feedback').textContent = `❌ Wrong. Correct: ${currentQuestion.answer.toUpperCase()} (🛬 ${currentQuestion.notes})`;
     document.getElementById('feedback').style.color = "red";
   }
 
