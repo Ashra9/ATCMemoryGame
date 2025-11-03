@@ -7,4 +7,5 @@ A game to test your memory on ATC airline and airport codes and callsigns!
 - Added tolerance for spelling errors
 
 ##
-levenshtein function from [Gustaf Andersson](https://github.com/gustf/js-levenshtein)
+levenshtein function from [Gustaf Andersson](https://github.com/gustf/js-levenshtein).
+
