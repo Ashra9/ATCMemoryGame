@@ -4,7 +4,7 @@ let currentQuestion = null;
 let mode = 'airport';
 let score = 0;
 let totalQuestions = 0;
-loc_indi = `Code,Location
+const loc_indi = `Code,Location
 WMKJ,Johor
 WMKI,Ipoh
 WMKK,KL International
@@ -21,7 +21,7 @@ WIDD,Batam
 WIDN,Tg Pinang
 WIII,Jakarta International
 WIMM,Medan
-WAAA,Ujung Panding
+WAAA,Ujung Pandang
 WADD,Denpasar
 WALL,Balikpapan
 WAMM,Manado
@@ -69,8 +69,14 @@ VOMM,Chennai
 KSFO,San Francisco
 OMDB,Dubai
 ZGSZ,Shenzhen
+WBGS,Sibu
+WIHH,Halim
+YPDN,Darwin
+EGLL,London Heathrow
+OEJN,Jeddah
+FACT,Cape Town
 `
-acarrier_rtf = `Operator,Designator,RTF Callsign
+const acarrier_rtf = `Operator,Designator,RTF Callsign
 Aero Dili,DTL,AERO DILI
 "AHK, Air Hong Kong Ltd ",AHK ,AIR HONG KONG 
 Air Asia Sdn Bhd ,AXM ,RED CAP 
@@ -109,7 +115,7 @@ Druk Air ,DRK ,ROYAL BHUTAN
 Emirates ,UAE ,EMIRATES 
 Etihad Airlines ,ETD ,ETIHAD 
 Ethiopian Airlines ,ETH ,ETHIOPIAN 
-EVA Airways Corp. ,EVA ,EVA AIR 
+EVA Airways Corp. ,EVA ,EVA
 Federal Express Corp. ,FDX ,FEDEX 
 Finnair ,FIN ,FINNAIR 
 Fiji Airways ,FJI ,FIJI 
@@ -151,7 +157,7 @@ Royal Brunei Airlines ,RBA ,BRUNEI
 Royal Malaysian Air Force ,RMF ,ANGKASA 
 Royal Nepal Airlines ,RNA ,ROYAL NEPAL 
 Saudi Arabian Airlines ,SVA ,SAUDIA 
-Scoot Pte Ltd ,SCO/TGW ,SCOOTER 
+Scoot Pte Ltd ,TGW ,SCOOTER 
 SF Airlines,CSS,SHUN FENG
 Shandong Airlines ,CDG ,SHANDONG 
 Shenzhen Airlines ,CSZ ,SHENZHEN AIR 
@@ -172,10 +178,24 @@ Turkish Airlines Co ,THY ,TURKISH
 United Airlines Inc. ,UAL ,UNITED 
 United Parcel Service Co ,UPS ,UPS 
 US-Bangla Airlines ,UBG ,BANGLA STAR 
-VietJet Air ,VJC ,VIET JET 
-West Air Co Ltd ,CHB ,WEST CHINA 
-Xiamen Airlines ,CXA ,XIAMEN AIR 
-Zipair,TZP,ZIPPY`
+VietJet Air,VJC ,VIET JET 
+West Air Co Ltd,CHB ,WEST CHINA 
+Xiamen Airlines,CXA ,XIAMEN AIR 
+Zipair,TZP,ZIPPY
+Sriwijaya Air,SJY,SRIWIJAYA
+Police,POL,POLICE
+Flyfirefly Sdn Bhd,FFM,FIREFLY
+Myanmar National Airlines,UBA,UNION AIR
+Lion Air,LNI,LION INTER
+Indonesia AirAsia,AWQ,WAGON AIR
+AirAsia X,XAX,XANADU
+Wings Air,WON,WINGS ABADI
+AeroLogic,BOX,GERMAN CARGO
+Cargolux,CLX,CARGO LUX
+Hebei Airlines,HBH,HEBEI
+VistaJet,VJT,VISTA JET
+REGA Swiss Air-Ambulance,SAZ,SWISS AMBULANCE`
+
 window.onload = () => {
   loadCSVData();
 };
@@ -186,7 +206,6 @@ function loadCSVData() {
     // download: true,
     header: true,
     complete: (results) => {
-      console.log(results);
       airports = results.data.filter(item => item.Code && item.Location);
       filesLoaded++;
       checkIfReady();
@@ -197,9 +216,7 @@ function loadCSVData() {
     // download: true,
     header: true,
     complete: (results2) => {
-      console.log(results2.data);
       airlines = results2.data//.filter(item => item.Designator && item.Operator);
-      console.log(airlines);
       filesLoaded++;
       checkIfReady();
     }
@@ -221,8 +238,6 @@ function setMode(newMode) {
 }
 
 function askQuestion() {
-  console.log(airports);
-  console.log(airlines);
   if ((mode === 'airport' && airports.length === 0) ||
       (mode === 'airline' && airlines.length === 0) ||
       (mode === 'mixed' && (airports.length === 0 || airlines.length === 0))) {
@@ -283,8 +298,9 @@ function randomAirlineQuestion() {
 function submitAnswer() {
   const userAnswer = document.getElementById('answer').value.trim().toLowerCase();
   totalQuestions++;
-
-  if (userAnswer === currentQuestion.answer) {
+  const dist = leven();
+  // leveshtein distance tolerance between the correct answer and the given input
+  if (dist(userAnswer, currentQuestion.answer) <= 1) {
     score++;
     document.getElementById('feedback').textContent = `✅ Correct!`;
     document.getElementById('feedback').style.color = "green";
@@ -305,4 +321,106 @@ document.getElementById('answer').addEventListener('keydown', function (event) {
 function updateScoreboard() {
   document.getElementById('score').textContent = score;
   document.getElementById('questions').textContent = totalQuestions;
+}
+// levenshtein function
+function leven()
+{
+  function _min(d0, d1, d2, bx, ay)
+  {
+    return d0 < d1 || d2 < d1
+        ? d0 > d2
+            ? d2 + 1
+            : d0 + 1
+        : bx === ay
+            ? d1
+            : d1 + 1;
+  }
+  return function(a, b)
+  {
+    if (a === b) {
+      return 0;
+    }
+    if (a.length > b.length) {
+      var tmp = a;
+      a = b;
+      b = tmp;
+    }
+
+    var la = a.length;
+    var lb = b.length;
+
+    while (la > 0 && (a.charCodeAt(la - 1) === b.charCodeAt(lb - 1))) {
+      la--;
+      lb--;
+    }
+
+    var offset = 0;
+
+    while (offset < la && (a.charCodeAt(offset) === b.charCodeAt(offset))) {
+      offset++;
+    }
+
+    la -= offset;
+    lb -= offset;
+
+    if (la === 0 || lb < 3) {
+      return lb;
+    }
+
+    var x = 0;
+    var y;
+    var d0;
+    var d1;
+    var d2;
+    var d3;
+    var dd;
+    var dy;
+    var ay;
+    var bx0;
+    var bx1;
+    var bx2;
+    var bx3;
+
+    var vector = [];
+
+    for (y = 0; y < la; y++) {
+      vector.push(y + 1);
+      vector.push(a.charCodeAt(offset + y));
+    }
+
+    var len = vector.length - 1;
+
+    for (; x < lb - 3;) {
+      bx0 = b.charCodeAt(offset + (d0 = x));
+      bx1 = b.charCodeAt(offset + (d1 = x + 1));
+      bx2 = b.charCodeAt(offset + (d2 = x + 2));
+      bx3 = b.charCodeAt(offset + (d3 = x + 3));
+      dd = (x += 4);
+      for (y = 0; y < len; y += 2) {
+        dy = vector[y];
+        ay = vector[y + 1];
+        d0 = _min(dy, d0, d1, bx0, ay);
+        d1 = _min(d0, d1, d2, bx1, ay);
+        d2 = _min(d1, d2, d3, bx2, ay);
+        dd = _min(d2, d3, dd, bx3, ay);
+        vector[y] = dd;
+        d3 = d2;
+        d2 = d1;
+        d1 = d0;
+        d0 = dy;
+      }
+    }
+
+    for (; x < lb;) {
+      bx0 = b.charCodeAt(offset + (d0 = x));
+      dd = ++x;
+      for (y = 0; y < len; y += 2) {
+        dy = vector[y];
+        vector[y] = dd = _min(dy, d0, dd, bx0, vector[y + 1]);
+        d0 = dy;
+      }
+    }
+
+    return dd;
+  };
 }
