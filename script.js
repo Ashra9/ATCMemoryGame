@@ -1,81 +1,84 @@
 let airports = [];
 let airlines = [];
+let weights_airports = [];
+let weights_airlines = [];
+var my_chance = new Chance(); // instantiate a Chance instance https://github.com/chancejs/chancejs
 let currentQuestion = null;
 let mode = 'airport';
 let score = 0;
 let totalQuestions = 0;
-const loc_indi = `Code,Location
-WMKJ,Johor
-WMKI,Ipoh
-WMKK,KL International
-WMKL,Langkawi
-WMKP,Penang
-WBSB,Brunei
-WBGG,Kuching
-WBGR,Miri
-WBKK,Kota Kinabalu
-WBKW,Tawau
-WBKS,Sandakan
-WIBB,Pekan Baru
-WIDD,Batam
-WIDN,Tg Pinang
-WIII,Jakarta International
-WIMM,Medan
-WAAA,Ujung Pandang
-WADD,Denpasar
-WALL,Balikpapan
-WAMM,Manado
-WAHI,Jogyakarta
-WARR,Surabaya
-WSAP,Paya Lebar
-RPLL,Manila
-RPLB,Subic Bay
-RPVM,Cebu
-RPMD,Davao
-VHHH,Hong Kong
-VYYY,Yangon
-VYMD,Mandalay
-VTBD,Bangkok Don Mueang International
-VTBS,Bangkok Suvarnabhumi
-VTSP,Phuket International
-VTSS,Hat Yai International
-VVNB,Hanoi
-VVTS,Ho Chi Minh
-VIDP,Delhi
-VABB,Mumbai
-VOBL,Bangalore
-RJAA,Narita
-RJTT,Haneda 
-ZBAA,Beijing
-ZBTJ,Tianjin
-ZGGG,Guangzhou
-ZGHA,Changsha
-ZHHH,Wuhan
-ZSNJ,Nanjing
-ZUCK,Chongqing
-AYPY,Port Moresby
-YBBN,Brisbane
-YSSY,Sydney
-YMML,Melbourne
-YPPH,Perth
-YPAD,Adelaide
-NZAA,Auckland
-NZCH,Christchurch
-ZSSS,Shanghai Hongqiao
-ZSPD,Shanghai Pudong
-RCTP,Taipei
-RKSI,Seoul
-VOMM,Chennai
-KSFO,San Francisco
-OMDB,Dubai
-ZGSZ,Shenzhen
-WBGS,Sibu
-WIHH,Halim
-YPDN,Darwin
-EGLL,London Heathrow
-OEJN,Jeddah
-FACT,Cape Town
-`
+const loc_indi = `Code,Location,Alt1,Alt2
+WMKJ,Johor,,
+WMKI,Ipoh,,
+WMKK,KL International,Kuala Lumpur,KLIA
+WMKL,Langkawi,,
+WMKP,Penang,,
+WBSB,Brunei,,
+WBGG,Kuching,,
+WBGR,Miri,,
+WBKK,Kota Kinabalu,Kinabalu,
+WBKW,Tawau,,
+WBKS,Sandakan,,
+WIBB,Pekan Baru,,
+WIDD,Batam,,
+WIDN,Tg Pinang,Tanjung Pinang,
+WIII,Jakarta International,Jakarta,
+WIMM,Medan,,
+WAAA,Ujung Pandang,,
+WADD,Denpasar,,
+WALL,Balikpapan,,
+WAMM,Manado,,
+WAHI,Jogyakarta,,
+WARR,Surabaya,,
+WSAP,Paya Lebar,,
+RPLL,Manila,,
+RPLB,Subic Bay,,
+RPVM,Cebu,,
+RPMD,Davao,,
+VHHH,Hong Kong,,
+VYYY,Yangon,,
+VYMD,Mandalay,,
+VTBD,Bangkok Don Mueang International,Bangkok,Don Mueang
+VTBS,Bangkok Suvarnabhumi,Bangkok,Suvarnabhumi
+VTSP,Phuket International,Phuket,
+VTSS,Hat Yai International,Hat Yai,
+VVNB,Hanoi,,
+VVTS,Ho Chi Minh,,
+VIDP,Delhi,,
+VABB,Mumbai,,
+VOBL,Bangalore,,
+RJAA,Narita,,
+RJTT,Haneda ,,
+ZBAA,Beijing,,
+ZBTJ,Tianjin,,
+ZGGG,Guangzhou,,
+ZGHA,Changsha,,
+ZHHH,Wuhan,,
+ZSNJ,Nanjing,,
+ZUCK,Chongqing,,
+AYPY,Port Moresby,,
+YBBN,Brisbane,,
+YSSY,Sydney,,
+YMML,Melbourne,,
+YPPH,Perth,,
+YPAD,Adelaide,,
+NZAA,Auckland,,
+NZCH,Christchurch,,
+ZSSS,Shanghai Hongqiao,Hongqiao,Shanghai
+ZSPD,Shanghai Pudong,Pudong,Shanghai
+RCTP,Taipei,,
+RKSI,Seoul,,
+VOMM,Chennai,,
+KSFO,San Francisco,,
+OMDB,Dubai,,
+ZGSZ,Shenzhen,,
+WBGS,Sibu,,
+WIHH,Halim,,
+YPDN,Darwin,,
+EGLL,London Heathrow,Heathrow,
+OEJN,Jeddah,,
+FACT,Cape Town,,`
+
 const acarrier_rtf = `Operator,Designator,RTF Callsign
 Aero Dili,DTL,AERO DILI
 "AHK, Air Hong Kong Ltd ",AHK ,AIR HONG KONG 
@@ -206,7 +209,7 @@ function loadCSVData() {
     // download: true,
     header: true,
     complete: (results) => {
-      airports = results.data.filter(item => item.Code && item.Location);
+      airports = results.data//.filter(item => item.Code && item.Location && item.Alt1 && item.Alt2);
       filesLoaded++;
       checkIfReady();
     }
@@ -233,6 +236,11 @@ function setMode(newMode) {
   mode = newMode;
   score = 0;
   totalQuestions = 0;
+  // populate the weights arrays
+  weights_airports = new Array(airports.length).fill(1);
+  weights_airlines = new Array(airlines.length).fill(1);
+  console.log(airports);
+  console.log(weights_airports);
   updateScoreboard();
   askQuestion();
 }
@@ -261,49 +269,48 @@ function askQuestion() {
   document.getElementById('feedback').textContent = '';
 }
 
-
 function randomAirportQuestion() {
-  const item = airports[Math.floor(Math.random() * airports.length)];
+  // const item = airports[Math.floor(Math.random() * airports.length)];
+  const item = my_chance.weighted(airports, weights_airports); // obtain weighted random generated choice
+  const idx = airports.indexOf(item);
+  // update the weights
+  weights_airports[idx] = weights_airports[idx] * 0.5;
+  console.log(weights_airports);
   return {
     prompt: `What is the location for code: ${item.Code}?`,
     answer: item.Location.trim().toLowerCase(),
+    alt1: item.Alt1.trim().toLowerCase(),
+    alt2: item.Alt2.trim().toLowerCase(),
     notes: ''
   };
 }
 
 function randomAirlineQuestion() {
-  const item = airlines[Math.floor(Math.random() * airlines.length)];
+  // const item = airlines[Math.floor(Math.random() * airlines.length)];
+  const item = my_chance.weighted(airlines, weights_airlines); // obtain weighted random generated choice
+  const idx = airlines.indexOf(item);
+  // update the weights
+  weights_airlines[idx] = weights_airlines[idx] * 0.5;
+  console.log(weights_airlines);  
   return {
     prompt: `What is the RTF CALLSIGN for operator: ${item.Designator}?`,
     answer: item['RTF Callsign'].trim().toLowerCase(),
+    alt1: null,
+    alt2: null,
     notes: item.Operator.trim().toLowerCase()
   };
-
-  // const rand = Math.floor(Math.random() * 2); // 0 or 1
-  // if (rand === 0) {
-  //   return {
-  //     prompt: `What operator uses designator: ${item.Designator}?`,
-  //     answer: item.Operator.trim().toLowerCase(),
-  //     notes: ''
-  //   };
-  // } else {
-  //   return {
-  //     prompt: `What is the RTF CALLSIGN for operator: ${item.Designator}?`,
-  //     answer: item['RTF Callsign'].trim().toLowerCase(),
-  //     notes: item.Operator.trim().toLowerCase()
-  //   };
-  // }
 }
 
 function submitAnswer() {
   const userAnswer = document.getElementById('answer').value.trim().toLowerCase();
   totalQuestions++;
   const dist = leven();
+
   // leveshtein distance tolerance between the correct answer and the given input
-  if (dist(userAnswer, currentQuestion.answer) <= 1) {
+  if ((dist(userAnswer, currentQuestion.answer) <= 1) || (currentQuestion.alt1 != null && dist(userAnswer, currentQuestion.alt1) <= 1) || (currentQuestion.alt1 != null && dist(userAnswer, currentQuestion.alt2) <= 1)) {
     score++;
-    document.getElementById('feedback').textContent = `✅ Correct!`;
-    document.getElementById('feedback').style.color = "green";
+    document.getElementById('feedback').textContent = `✅ Correct! (🛬 ${currentQuestion.notes})`;
+    document.getElementById('feedback').style.color = "lime";
   } else {
     document.getElementById('feedback').textContent = `❌ Wrong. Correct: ${currentQuestion.answer.toUpperCase()} (🛬 ${currentQuestion.notes})`;
     document.getElementById('feedback').style.color = "red";

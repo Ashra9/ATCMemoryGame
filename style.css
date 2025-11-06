@@ -1,13 +1,13 @@
-body {
-    font-family: Arial, sans-serif;
-    background: #f0f8ff;
+/* body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #6a796c;
     display: flex;
     justify-content: center;
     padding: 20px;
   }
   
   .game-container {
-    background: white;
+    background: #e9f5db;
     padding: 30px;
     border-radius: 8px;
     width: 500px;
@@ -18,6 +18,7 @@ body {
   #question {
     font-size: 1.5em;
     margin: 20px 0;
+    color: #000000;
   }
   
   input[type="text"] {
@@ -25,6 +26,7 @@ body {
     width: 80%;
     margin-bottom: 10px;
     font-size: 1em;
+    background-color: #e9f5db;
   }
   
   button {
@@ -42,4 +44,63 @@ body {
   #scoreboard {
     margin-top: 20px;
   }
-  
+   */
+body {
+    font-family: Arial, sans-serif;
+    background: #2a2a2a; /* Dark background for night mode */
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    color: #f0f0f0; /* Light text color for contrast */
+}
+
+.game-container {
+    background: #3c3f41; /* Slightly lighter dark background */
+    padding: 30px;
+    border-radius: 8px;
+    width: 500px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Darker shadow for night mode */
+    text-align: center;
+    color: #f0f0f0; /* Ensure the text is light on the dark background */
+}
+
+#question {
+    font-size: 1.5em;
+    margin: 20px 0;
+    color: #e0e0e0; /* Soft white for question text */
+}
+
+input[type="text"] {
+    padding: 10px;
+    width: 80%;
+    margin-bottom: 10px;
+    font-size: 1em;
+    background-color: #4a4f52; /* Dark background for input */
+    color: #f0f0f0; /* Light text in the input field */
+    border: 1px solid #555; /* Subtle border for input */
+}
+
+button {
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    background-color: #565d60; /* Dark gray button background */
+    color: #f0f0f0; /* Light text on buttons */
+    border: 1px solid #555; /* Button border */
+}
+
+button:hover {
+    background-color: #6b7376; /* Lighter gray on hover */
+}
+
+#feedback {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #dcdcdc; /* Light color for feedback */
+}
+
+#scoreboard {
+    margin-top: 20px;
+    color: #b0b0b0; /* Slightly dimmed scoreboard text */
+}
