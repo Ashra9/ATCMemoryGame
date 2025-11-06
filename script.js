@@ -305,9 +305,8 @@ function submitAnswer() {
   const userAnswer = document.getElementById('answer').value.trim().toLowerCase();
   totalQuestions++;
   const dist = leven();
-
   // leveshtein distance tolerance between the correct answer and the given input
-  if ((dist(userAnswer, currentQuestion.answer) <= 1) || (currentQuestion.alt1 != null && dist(userAnswer, currentQuestion.alt1) <= 1) || (currentQuestion.alt1 != null && dist(userAnswer, currentQuestion.alt2) <= 1)) {
+  if ((dist(userAnswer, currentQuestion.answer) <= 1) || (currentQuestion.alt1 && dist(userAnswer, currentQuestion.alt1) <= 1) || (currentQuestion.alt2 && dist(userAnswer, currentQuestion.alt2) <= 1)) {
     score++;
     document.getElementById('feedback').textContent = `✅ Correct! (🛬 ${currentQuestion.notes})`;
     document.getElementById('feedback').style.color = "lime";
