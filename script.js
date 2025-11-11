@@ -142,8 +142,8 @@ K-Mile Air Co Ltd ,KMI ,KAY-MILE AIR
 Lao Airlines ,LAO ,LAO 
 Lufthansa Cargo ,GEC ,LUFTHANSA CARGO 
 Malaysia Airlines,MAS ,MALAYSIAN 
-Malindo Airlines ,MXD ,MALINDO EXPRESS 
-Mandarin Airlines,MDA,MANDARIN
+Malindo Airlines ,MXD ,MALINDO 
+Mandarin Airlines,MDA,MANDARIN 
 Myanmar Airways International,MMA ,MYANMAR 
 Nippon Cargo Airlines ,NCA ,NIPPON CARGO 
 Peach,APJ,AIR PEACH
