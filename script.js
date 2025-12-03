@@ -94,7 +94,18 @@ LIMC,Milano,,
 LIRF,Roma,,
 LSZH,Zurich,,
 LTFM,Istanbul,,
-OMAA,Abu Dhabi,,`
+OMAA,Abu Dhabi,,
+VTSM,Koh Samui,,
+RJBB,Osaka Kansai International Airport,Osaka,Kansai
+VGHS,Dhaka Shahjalal International Airport,Dhaka,
+VDPP,Phnom Penh International Airport,Phnom Penh,
+ZSAM,Xiamen,,
+VVDN,Da Nang,,
+OTHH,Doha Hamad International Airport,Doha,
+VOHS,Hyderabad Rajiv Gandhi International Airport,Hyderabad,
+VOTR,Tiruchirapalli,,
+RPLC,Angeles City Clark International Airport,Angeles City,Clark
+FAOR,Johannesburg OR Tambo International Airport,Johannesburg,`
 
 const acarrier_rtf = `Operator,Designator,RTF Callsign
 Aero Dili,DTL,AERO DILI
@@ -160,7 +171,7 @@ Lao Airlines ,LAO ,LAO
 Lufthansa Cargo ,GEC ,LUFTHANSA CARGO 
 Malaysia Airlines,MAS ,MALAYSIAN 
 Malindo Airlines ,MXD ,MALINDO 
-Mandarin Airlines,MDA,MANDARIN 
+Mandarin Airlines,MDA,MANDARIN
 Myanmar Airways International,MMA ,MYANMAR 
 Nippon Cargo Airlines ,NCA ,NIPPON CARGO 
 Peach,APJ,AIR PEACH
@@ -214,7 +225,9 @@ AeroLogic,BOX,GERMAN CARGO
 Cargolux,CLX,CARGO LUX
 Hebei Airlines,HBH,HEBEI
 VistaJet,VJT,VISTA JET
-REGA Swiss Air-Ambulance,SAZ,SWISS AMBULANCE`
+REGA Swiss Air-Ambulance,SAZ,SWISS AMBULANCE
+France - Navy,FNY,FRENCH NAVY
+MJets Air,KXP,XPRESS KARGO`
 
 window.onload = () => {
   loadCSVData();
