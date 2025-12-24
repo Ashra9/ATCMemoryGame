@@ -81,7 +81,7 @@ OEJN,Jeddah,,
 FACT,Cape Town,,
 EGCC,Manchester,,
 LGAV,Athens,,
-LEAR,Madrid,,
+LEMD,Madrid,,
 LOWW,Vienna,,
 EDDF,Frankfurt,,
 EDDM,Munich,,
@@ -109,109 +109,109 @@ FAOR,Johannesburg OR Tambo International Airport,Johannesburg,`
 
 const acarrier_rtf = `Operator,Designator,RTF Callsign
 Aero Dili,DTL,AERO DILI
-"AHK, Air Hong Kong Ltd ",AHK ,AIR HONG KONG 
-Air Asia Sdn Bhd ,AXM ,RED CAP 
-Air Cambodia,KHV ,CAMBODIA AIR
+"AHK, Air Hong Kong Ltd ",AHK,AIR HONG KONG 
+Air Asia Sdn Bhd ,AXM,RED CAP 
+Air Cambodia,KHV,CAMBODIA AIR
 Air Canada,ACA,AIR CANADA
-Air China Intl. Corp. ,CCA ,AIR CHINA 
-Air France ,AFR ,AIRFRANS 
-Air India Ltd ,AIC ,AIRINDIA 
-Air India Express ,AXB ,EXPRESS INDIA 
-Air Japan Co. Ltd ,AJX ,AIR JAPAN 
-Air Macau ,AMU ,AIR MACAU 
-"Air Mobility Command (AMC, USAF) ",RCH ,REACH 
-Air New Zealand Ltd ,ANZ ,NEW ZEALAND 
-Air Niugini ,ANG ,NIUGINI 
-Air Transport Intl. ,ATN ,AIR TRANSPORT 
-All Nippon Airways Co. Ltd ,ANA ,ALL NIPPON 
+Air China Intl. Corp. ,CCA,AIR CHINA 
+Air France ,AFR,AIRFRANS 
+Air India Ltd ,AIC,AIRINDIA 
+Air India Express ,AXB,EXPRESS INDIA 
+Air Japan Co. Ltd ,AJX,AIR JAPAN 
+Air Macau ,AMU,AIR MACAU 
+"Air Mobility Command (AMC, USAF) ",RCH,REACH 
+Air New Zealand Ltd ,ANZ,NEW ZEALAND 
+Air Niugini ,ANG,NIUGINI 
+Air Transport Intl. ,ATN,AIR TRANSPORT 
+All Nippon Airways Co. Ltd ,ANA,ALL NIPPON 
 Asia Cargo Airlines,TMG,TRILINES
-Asiana Airlines ,AAR ,ASIANA 
-Bangkok Airways ,BKP ,BANGKOK AIR 
-Bangladesh Biman ,BBC ,BANGLADESH 
-Batik Air ,BTK ,BATIK 
-British Airways ,BAW ,SPEEDBIRD 
+Asiana Airlines ,AAR,ASIANA 
+Bangkok Airways ,BKP,BANGKOK AIR 
+Bangladesh Biman ,BBC,BANGLADESH 
+Batik Air ,BTK,BATIK 
+British Airways ,BAW,SPEEDBIRD 
 Cambodia Airways,KME,GIANT IBIS
-Cathay Pacific Airways Ltd ,CPA ,CATHAY 
-Cebu Pacific Air ,CEB ,CEBU AIR 
+Cathay Pacific Airways Ltd ,CPA,CATHAY 
+Cebu Pacific Air ,CEB,CEBU AIR 
 Central Airlines,HLF,HOMELAND
-China Airlines ,CAL ,DYNASTY 
+China Airlines ,CAL,DYNASTY 
 China Cargo Airlines,CKK,CARGO KING
-China Eastern Airlines ,CES ,CHINA EASTERN 
-China Southern Airlines ,CSN ,CHINA SOUTHERN 
-Chongqing Airlines ,CQN ,CHONG QING 
-Citilink Indonesia ,CTV ,SUPERGREEN 
-Delta airlines ,DAL ,DELTA 
-Lufthansa ,DLH ,LUFTHANSA 
-Druk Air ,DRK ,ROYAL BHUTAN 
-Emirates ,UAE ,EMIRATES 
-Etihad Airlines ,ETD ,ETIHAD 
-Ethiopian Airlines ,ETH ,ETHIOPIAN 
-EVA Airways Corp. ,EVA ,EVA
-Federal Express Corp. ,FDX ,FEDEX 
-Finnair ,FIN ,FINNAIR 
-Fiji Airways ,FJI ,FIJI 
-Garuda Indonesia Airways ,GIA ,INDONESIA 
+China Eastern Airlines ,CES,CHINA EASTERN 
+China Southern Airlines ,CSN,CHINA SOUTHERN 
+Chongqing Airlines ,CQN,CHONG QING 
+Citilink Indonesia ,CTV,SUPERGREEN 
+Delta airlines ,DAL,DELTA 
+Lufthansa ,DLH,LUFTHANSA 
+Druk Air ,DRK,ROYAL BHUTAN 
+Emirates ,UAE,EMIRATES 
+Etihad Airlines ,ETD,ETIHAD 
+Ethiopian Airlines ,ETH,ETHIOPIAN 
+EVA Airways Corp. ,EVA,EVA
+Federal Express Corp. ,FDX,FEDEX 
+Finnair ,FIN,FINNAIR 
+Fiji Airways ,FJI,FIJI 
+Garuda Indonesia Airways ,GIA,INDONESIA 
 Gulf Air,GFA,GULF AIR
-Hainan Airlines ,CHH ,HAINAN 
-Vietnam Airlines,HVN ,VIET NAM AIRLINES 
-Hong Kong Air Cargo Carrier Ltd ,HKC ,MASCOT 
-Hong Kong Airlines Ltd ,CRK ,BAUHINIA 
-Hong Kong Express Airways Ltd ,HKE ,HONG KONG SHUTTLE 
-IndiGo Airlines ,IGO ,IFLY 
-IDG Technology Air ,IDG ,INDIGO 
-Japan Airlines ,JAL ,JAPANAIR 
+Hainan Airlines ,CHH,HAINAN 
+Vietnam Airlines,HVN,VIET NAM AIRLINES 
+Hong Kong Air Cargo Carrier Ltd ,HKC,MASCOT 
+Hong Kong Airlines Ltd ,CRK,BAUHINIA 
+Hong Kong Express Airways Ltd ,HKE,HONG KONG SHUTTLE 
+IndiGo Airlines ,IGO,IFLY 
+IDG Technology Air ,IDG,INDIGO 
+Japan Airlines ,JAL,JAPANAIR 
 JDL Airlines,JDL,JINGDONG
 Jeju Air,JJA,JEJU AIR
-Jetstar Airways ,JST ,JETSTAR 
-Juneyao Airlines ,DKH ,AIR JUNEYAO 
-KLM Royal Dutch Airlines ,KLM ,KLM 
-Korean Airlines Co ltd ,KAL ,KOREANAIR 
-K-Mile Air Co Ltd ,KMI ,KAY-MILE AIR 
-Lao Airlines ,LAO ,LAO 
-Lufthansa Cargo ,GEC ,LUFTHANSA CARGO 
-Malaysia Airlines,MAS ,MALAYSIAN 
-Malindo Airlines ,MXD ,MALINDO 
+Jetstar Airways ,JST,JETSTAR 
+Juneyao Airlines ,DKH,AIR JUNEYAO 
+KLM Royal Dutch Airlines ,KLM,KLM 
+Korean Airlines Co ltd ,KAL,KOREANAIR 
+K-Mile Air Co Ltd ,KMI,KAY-MILE AIR 
+Lao Airlines ,LAO,LAO 
+Lufthansa Cargo ,GEC,LUFTHANSA CARGO 
+Malaysia Airlines,MAS,MALAYSIAN 
+Malindo Airlines ,MXD,MALINDO 
 Mandarin Airlines,MDA,MANDARIN
-Myanmar Airways International,MMA ,MYANMAR 
-Nippon Cargo Airlines ,NCA ,NIPPON CARGO 
+Myanmar Airways International,MMA,MYANMAR 
+Nippon Cargo Airlines ,NCA,NIPPON CARGO 
 Peach,APJ,AIR PEACH
 Pelita Air,PAS,PELITA
-Philippine Airasia Inc ,APG ,COOL RED 
-Philippines Airlines ,PAL ,PHILIPPINE 
-Qantas Airways ,QFA ,QANTAS 
-Qatar Airways ,QTR ,QATARI 
-RAF (Air Transport) ,RRR ,ASCOT 
-Regent Airways ,RGE ,REGENT 
-Republic of S'pore Air Force ,SAF ,SINGA 
-Royal Australian Air Force ,ASY ,AUSSIE 
-Royal Brunei Airlines ,RBA ,BRUNEI 
-Royal Malaysian Air Force ,RMF ,ANGKASA 
-Royal Nepal Airlines ,RNA ,ROYAL NEPAL 
-Saudi Arabian Airlines ,SVA ,SAUDIA 
-Scoot Pte Ltd ,TGW ,SCOOTER 
+Philippine Airasia Inc ,APG,COOL RED 
+Philippines Airlines ,PAL,PHILIPPINE 
+Qantas Airways ,QFA,QANTAS 
+Qatar Airways ,QTR,QATARI 
+RAF (Air Transport) ,RRR,ASCOT 
+Regent Airways ,RGE,REGENT 
+Republic of S'pore Air Force ,SAF,SINGA 
+Royal Australian Air Force ,ASY,AUSSIE 
+Royal Brunei Airlines ,RBA,BRUNEI 
+Royal Malaysian Air Force ,RMF,ANGKASA 
+Royal Nepal Airlines ,RNA,ROYAL NEPAL 
+Saudi Arabian Airlines ,SVA,SAUDIA 
+Scoot Pte Ltd ,TGW,SCOOTER 
 SF Airlines,CSS,SHUN FENG
-Shandong Airlines ,CDG ,SHANDONG 
-Shenzhen Airlines ,CSZ ,SHENZHEN AIR 
-Sichuan Airlines ,CSC ,SICHUAN AIR 
-Silk Way West Airlines Azerbaijan ,AZG ,SILK WEST 
-Singapore Airlines,SIA ,SINGAPORE 
-Spring Airlines ,CQH ,AIR SPRING 
-Srilankan Airlines ,ALK ,SRILANKAN 
+Shandong Airlines ,CDG,SHANDONG 
+Shenzhen Airlines ,CSZ,SHENZHEN AIR 
+Sichuan Airlines ,CSC,SICHUAN AIR 
+Silk Way West Airlines Azerbaijan ,AZG,SILK WEST 
+Singapore Airlines,SIA,SINGAPORE 
+Spring Airlines ,CQH,AIR SPRING 
+Srilankan Airlines ,ALK,SRILANKAN 
 Starlux,SJX,STARWALKER
 Suparna Airlines,YZR,YANGTZE RIVER
-Swiss International Airlines ,SWR ,SWISS 
+Swiss International Airlines ,SWR,SWISS 
 T'way Air,TWB,TEEWAY
 Tianjin Airlines,GCR,BOHAI
-Thai Airways Intl. ,THA ,THAI 
-Thai Air Asia Aviation Ltd ,AIQ ,THAI ASIA 
+Thai Airways Intl. ,THA,THAI 
+Thai Air Asia Aviation Ltd ,AIQ,THAI ASIA 
 TransNusa,TNU,TRANSNUSA
-Turkish Airlines Co ,THY ,TURKISH 
-United Airlines Inc. ,UAL ,UNITED 
-United Parcel Service Co ,UPS ,UPS 
-US-Bangla Airlines ,UBG ,BANGLA STAR 
-VietJet Air,VJC ,VIET JET 
-West Air Co Ltd,CHB ,WEST CHINA 
-Xiamen Airlines,CXA ,XIAMEN AIR 
+Turkish Airlines Co ,THY,TURKISH 
+United Airlines Inc. ,UAL,UNITED 
+United Parcel Service Co ,UPS,UPS 
+US-Bangla Airlines ,UBG,BANGLA STAR 
+VietJet Air,VJC,VIET JET 
+West Air Co Ltd,CHB,WEST CHINA 
+Xiamen Airlines,CXA,XIAMEN AIR 
 Zipair,TZP,ZIPPY
 Sriwijaya Air,SJY,SRIWIJAYA
 Police,POL,POLICE
@@ -227,7 +227,11 @@ Hebei Airlines,HBH,HEBEI
 VistaJet,VJT,VISTA JET
 REGA Swiss Air-Ambulance,SAZ,SWISS AMBULANCE
 France - Navy,FNY,FRENCH NAVY
-MJets Air,KXP,XPRESS KARGO`
+MJets Air,KXP,XPRESS KARGO
+Thai Lion Air,TLM,MENTARI
+Boeing Company,BOE,BOEING
+Aircalin,ACI,AIRCALIN
+RGA-Black Stone Airlines,RGM,BLACK STONE`
 
 window.onload = () => {
   loadCSVData();
