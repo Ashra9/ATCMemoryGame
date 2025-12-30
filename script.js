@@ -8,7 +8,7 @@ let mode = 'airport';
 let score = 0;
 let totalQuestions = 0;
 const loc_indi = `Code,Location,Alt1,Alt2
-WMKJ,Johor,,
+WMKJ,Johor,Senai,
 WMKI,Ipoh,,
 WMKK,KL International,Kuala Lumpur,KLIA
 WMKL,Langkawi,,
@@ -68,7 +68,7 @@ NZCH,Christchurch,,
 ZSSS,Shanghai Hongqiao,Hongqiao,Shanghai
 ZSPD,Shanghai Pudong,Pudong,Shanghai
 RCTP,Taipei,,
-RKSI,Seoul,,
+RKSI,Seoul,Incheon,
 VOMM,Chennai,,
 KSFO,San Francisco,,
 OMDB,Dubai,,
@@ -77,6 +77,7 @@ WBGS,Sibu,,
 WIHH,Halim,,
 YPDN,Darwin,,
 EGLL,London Heathrow,Heathrow,
+EGBB,Birmingham,,
 OEJN,Jeddah,,
 FACT,Cape Town,,
 EGCC,Manchester,,
@@ -90,8 +91,8 @@ EKCH,Copenhagen,,
 EFHK,Helsinki,,
 LEBL,Barcelona,,
 LFPG ,Paris Charles De Gaulle ,Paris,
-LIMC,Milano,,
-LIRF,Roma,,
+LIMC,Milan,,
+LIRF,Rome,,
 LSZH,Zurich,,
 LTFM,Istanbul,,
 OMAA,Abu Dhabi,,
@@ -105,7 +106,36 @@ OTHH,Doha Hamad International Airport,Doha,
 VOHS,Hyderabad Rajiv Gandhi International Airport,Hyderabad,
 VOTR,Tiruchirapalli,,
 RPLC,Angeles City Clark International Airport,Angeles City,Clark
-FAOR,Johannesburg OR Tambo International Airport,Johannesburg,`
+FAOR,Johannesburg OR Tambo International Airport,Johannesburg,OR Tambo International
+EBLG,Belgium Liege,Liege,
+EBBR,Belgium Brussels,Brussels,
+EDDB,Berlin Brandenburg Int'l,Berlin,
+EDDF,Frankfurt Int'l,Frankfurt,
+EDDH,Hamburg,,
+EDDM,Munich Int'l,Munich,
+ELLX,Luxembourg,,
+HAAB,Addis Ababa Bole Int'l,Addis Ababa,
+HECA,Cairo Int'l,Cairo,
+KEWR,Newark Liberty Int'l,Newark Liberty,New York
+KLAX,Los Angeles Int'l,Los Angeles,
+LSGG,Geneva International,Geneva,
+ZJHK,Haikou,,
+ZSHC,Hangzhou,,
+VOCB,Coimbatore,,
+VCBI,Sri Lanka Columbo,Columbo,Sri Lanka
+VECC,Kolkata,,
+VTSG,Krabi,,
+ZPPP,Kunming,,
+VMMC,Macau,,
+VRMM,Male,Maldives,
+ZGNN,Nanning,,
+RKPK,Busan,,
+RJFF,Fukuoka,,
+RKPC,Jeju,,
+RCKH,Kaohsiung,,
+KJFK,New York JFK International Airport,New York,JFK
+CYVR,Vancouver,,
+OMSJ,Sharjah,,`
 
 const acarrier_rtf = `Operator,Designator,RTF Callsign
 Aero Dili,DTL,AERO DILI
@@ -231,7 +261,8 @@ MJets Air,KXP,XPRESS KARGO
 Thai Lion Air,TLM,MENTARI
 Boeing Company,BOE,BOEING
 Aircalin,ACI,AIRCALIN
-RGA-Black Stone Airlines,RGM,BLACK STONE`
+RGA-Black Stone Airlines,RGM,BLACK STONE
+Super Air Jet,SJV,PROSPER`
 
 window.onload = () => {
   loadCSVData();
