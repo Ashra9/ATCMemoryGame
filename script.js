@@ -99,7 +99,7 @@ OMAA,Abu Dhabi,,
 VTSM,Koh Samui,,
 RJBB,Osaka Kansai International Airport,Osaka,Kansai
 VGHS,Dhaka Shahjalal International Airport,Dhaka,
-VDPP,Phnom Penh International Airport,Phnom Penh,
+VDTI,Phnom Penh Techno International Airport,Phnom Penh,Techno
 ZSAM,Xiamen,,
 VVDN,Da Nang,,
 OTHH,Doha Hamad International Airport,Doha,
@@ -262,7 +262,10 @@ Thai Lion Air,TLM,MENTARI
 Boeing Company,BOE,BOEING
 Aircalin,ACI,AIRCALIN
 RGA-Black Stone Airlines,RGM,BLACK STONE
-Super Air Jet,SJV,PROSPER`
+Super Air Jet,SJV,PROSPER
+YTO Cargo Airlines,HYT,QUICK AIR
+EuroAtlantic Airways,MMZ,EUROATLANTIC
+SkyUp Airlines,SQP,SKYUP`
 
 window.onload = () => {
   loadCSVData();
@@ -274,7 +277,7 @@ function loadCSVData() {
     // download: true,
     header: true,
     complete: (results) => {
-      airports = results.data//.filter(item => item.Code && item.Location && item.Alt1 && item.Alt2);
+      airports = results.data
       filesLoaded++;
       checkIfReady();
     }
@@ -284,7 +287,7 @@ function loadCSVData() {
     // download: true,
     header: true,
     complete: (results2) => {
-      airlines = results2.data//.filter(item => item.Designator && item.Operator);
+      airlines = results2.data
       filesLoaded++;
       checkIfReady();
     }
@@ -358,7 +361,7 @@ function randomAirlineQuestion() {
   weights_airlines[idx] = weights_airlines[idx] * 0.5;
   console.log(weights_airlines);  
   return {
-    prompt: `What is the RTF CALLSIGN for operator: ${item.Designator}?`,
+    prompt: `RTF CALLSIGN for operator: ${item.Designator}?`,
     answer: item['RTF Callsign'].trim().toLowerCase(),
     alt1: null,
     alt2: null,
