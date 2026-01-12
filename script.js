@@ -49,7 +49,7 @@ VIDP,Delhi,,
 VABB,Mumbai,,
 VOBL,Bangalore,,
 RJAA,Narita,,
-RJTT,Haneda ,,
+RJTT,Haneda,,
 ZBAA,Beijing,,
 ZBTJ,Tianjin,,
 ZGGG,Guangzhou,,
@@ -135,7 +135,8 @@ RKPC,Jeju,,
 RCKH,Kaohsiung,,
 KJFK,New York JFK International Airport,New York,JFK
 CYVR,Vancouver,,
-OMSJ,Sharjah,,`
+OMSJ,Sharjah,,
+WIOO,Pontianak,,`
 
 const acarrier_rtf = `Operator,Designator,RTF Callsign
 Aero Dili,DTL,AERO DILI
@@ -265,7 +266,9 @@ RGA-Black Stone Airlines,RGM,BLACK STONE
 Super Air Jet,SJV,PROSPER
 YTO Cargo Airlines,HYT,QUICK AIR
 EuroAtlantic Airways,MMZ,EUROATLANTIC
-SkyUp Airlines,SQP,SKYUP`
+SkyUp Airlines,SQP,SKYUP
+PAL Express,GAP,AIRPHIL
+MY Indo Airlines,MYU,INDO`
 
 window.onload = () => {
   loadCSVData();
