@@ -268,7 +268,11 @@ YTO Cargo Airlines,HYT,QUICK AIR
 EuroAtlantic Airways,MMZ,EUROATLANTIC
 SkyUp Airlines,SQP,SKYUP
 PAL Express,GAP,AIRPHIL
-MY Indo Airlines,MYU,INDO`
+MY Indo Airlines,MYU,INDO
+LOT Polish Airlines,LOT,LOT
+NAM Air (Sriwijaya Air Group),LKN,NAMAIR
+Raya Airways,RMY,RAYA EXPRESS
+World Cargo Airlines,WCM,WORLD CARGO`
 
 window.onload = () => {
   loadCSVData();
