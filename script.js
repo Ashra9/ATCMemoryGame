@@ -272,7 +272,8 @@ MY Indo Airlines,MYU,INDO
 LOT Polish Airlines,LOT,LOT
 NAM Air (Sriwijaya Air Group),LKN,NAMAIR
 Raya Airways,RMY,RAYA EXPRESS
-World Cargo Airlines,WCM,WORLD CARGO`
+World Cargo Airlines,WCM,WORLD CARGO
+PJSC Aeroflot - Russian Airlines,AFL,AEROFLOT`
 
 window.onload = () => {
   loadCSVData();
