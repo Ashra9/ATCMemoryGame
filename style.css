@@ -1,62 +1,16 @@
-/* body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #6a796c;
-    display: flex;
-    justify-content: center;
-    padding: 20px;
-  }
-  
-  .game-container {
-    background: #e9f5db;
-    padding: 30px;
-    border-radius: 8px;
-    width: 500px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    text-align: center;
-  }
-  
-  #question {
-    font-size: 1.5em;
-    margin: 20px 0;
-    color: #000000;
-  }
-  
-  input[type="text"] {
-    padding: 10px;
-    width: 80%;
-    margin-bottom: 10px;
-    font-size: 1em;
-    background-color: #e9f5db;
-  }
-  
-  button {
-    padding: 10px 20px;
-    margin: 5px;
-    font-size: 1em;
-    cursor: pointer;
-  }
-  
-  #feedback {
-    margin-top: 10px;
-    font-weight: bold;
-  }
-  
-  #scoreboard {
-    margin-top: 20px;
-  }
-   */
 body {
     font-family: Arial, sans-serif;
     background: #2a2a2a; /* Dark background for night mode */
     display: flex;
     justify-content: center;
     padding: 20px;
+    padding-top: 48px;
     color: #f0f0f0; /* Light text color for contrast */
 }
 
 .game-container {
     background: #3c3f41; /* Slightly lighter dark background */
-    padding: 30px;
+    padding: 22px;
     border-radius: 8px;
     width: 500px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Darker shadow for night mode */
@@ -103,4 +57,29 @@ button:hover {
 #scoreboard {
     margin-top: 20px;
     color: #b0b0b0; /* Slightly dimmed scoreboard text */
+}
+
+nav {
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li a {
+  color: white;
+  padding: 14px 20px;
+  text-decoration: none;
+  display: block;
+}
+
+nav ul li a:hover {
+  background-color: #555;
 }

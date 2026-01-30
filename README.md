@@ -1,4 +1,4 @@
-# ATC Memory Game  ![Static Badge](https://img.shields.io/badge/build%20version-1.1.2-blue)
+# ATC Memory Game  ![Static Badge](https://img.shields.io/badge/build%20version-2.0.0-blue)
 
 
 A game to test your memory on ATC airline and airport codes and callsigns!

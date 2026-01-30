@@ -1,12 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>List Game</title>
+
+<style>
+
+  @font-face {
+    font-family: myFirstFont;
+    src: url(sansation_light.woff);
+  }
+  nav {
+    background-color: #333;
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav ul li a {
+    color: white;
+    padding: 14px 20px;
+    text-decoration: none;
+    display: block;
+  }
+
+  nav ul li a:hover {
+    background-color: #555;
+  }
+
+  body {
+    margin: 0;
+    padding-top: 48px;
+    font-family: Helvetica, Arial, sans-serif;
+    background: #fff;
+    color: #000;
+  }
+
+  /* Top input + stats */
+  .top {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    width: 100%;
+    gap: 20px;
+    padding: 14px 16px;
+    align-items: center;
+    position: fixed;
+    box-sizing: border-box;
+    background: #dcd4d4;
+    height: 100px;
+    /* min-width: 1000px; */
+  }
+
+  .input-box label {
+    font-size: 16px;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .input-row {
+    display: flex;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .input-box input {
+    width: 100%;
+    max-width: 420px; /* reduced width */
+    min-width: 100px;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+  }
+  .mode-select{
+    white-space: nowrap;
+  }
+  .stats {
+    text-align: right;
+  }
+
+  .stats small {
+    font-size: 15px;
+    color: #555;
+    display: block;
+  }
+
+  .stats span {
+    font-size: 32px;
+    font-weight: bold;
+  }
+
+  .give-up {
+    font-size: 12px;
+    color: #5c26a3;
+    cursor: pointer;
+    margin-top: 6px;
+  }
+
+  /* Table layout */
+  .tables {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    padding: 0 10px 20px;
+    padding-top: 100px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+  }
+
+  th {
+    background: #b7b7cb;
+    border: 1px solid #000;
+    padding: 6px;
+    font-size: 13px;
+    text-align: left;
+  }
+
+  td {
+    border: 1px solid #000;
+    padding: 4px 6px;
+    font-size: 13px;
+  }
+
+  .designator {
+    background: #f5f3ff;
+    font-weight: bold;
+    width: 35%;
+  }
+
+  .code {
+    background: #f5f3ff;
+    font-weight: bold;
+    width: 35%;
+  }
+
+  .callsign {
+    background: #fff;
+  }
+
+  .location {
+    background: #fff;
+  }
+
+  .hidden {
+    color: transparent;
+    visibility: hidden;
+  }
+
+  .missed {
+    color: #999;
+  }
+
+  /* Mobile */
+  @media (max-width: 900px) {
+    /* .top {
+      grid-template-columns: 1fr;
+    } */
+    button {
+      padding: 0.35rem 0.5rem;
+      font-size: 0.8rem;
+      flex-wrap: nowrap;
+    }
+    .stats {
+      text-align: left;
+    }
+    .stats span{
+      font-size: 24px;
+    }
+    .tables {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  button {
+    padding: 10px 20px;
+    margin: 5px;
+    max-width: min-content;
+    font-size: 1em;
+    cursor: pointer;
+    background-color: #565d60; /* Dark gray button background */
+    color: #f0f0f0; /* Light text on buttons */
+    border: 1px solid #555; /* Button border */
+  }
+
+  button:hover {
+      background-color: #6b7376; /* Lighter gray on hover */
+  }
+
+</style>
+</head>
+
+<body>
+<nav>
+  <ul>
+    <li><a href="index.html">🎲 Memory Game</a></li>
+    <li><a href="game2.html">✈️ List Game </a></li>
+  </ul>
+</nav>
+<div class="top">
+  <div class="input-box">
+    <div class="input-row">
+      <input id="answerInput" autocomplete="off" placeholder="Type your answer and press enter...">
+      <div id="mode-select">
+        <button onclick="setMode('airline')">Airlines</button>
+        <button onclick="setMode('airport')">Airports</button>
+      </div>
+    </div>
+  </div>
+  <div class="stats">
+    <!-- <small>SCORE</small> -->
+    <span id="score">0</span>
+    <div class="give-up" id="giveUp">Give Up</div>
+  </div>
+
+</div>
+
+<div class="tables" id="tables"></div>
+
+<script>
 let airports = [];
 let airlines = [];
-let weights_airports = [];
-let weights_airlines = [];
-var my_chance = new Chance(); // instantiate a Chance instance https://github.com/chancejs/chancejs
-let currentQuestion = null;
-let mode = 'airport';
-let score = 0;
-let totalQuestions = 0;
 const loc_indi = `Code,Location,Alt1,Alt2
 WMKJ,Johor,Senai,
 WMKI,Ipoh,,
@@ -278,6 +504,19 @@ Berjaya Air Sdn Bhd,BVT,BERJAYA
 TAG Aviation Asia,TBJ,TAG JET
 Scandinavian Airlines System,SAS,SCANDINAVIAN`
 
+let TOTAL = 0;
+/* ===== BUILD TABLES ===== */
+const container = document.getElementById("tables");
+let cells = [];
+let mode = 'airport';
+/* ===== GAME LOGIC ===== */
+const input = document.getElementById("answerInput");
+const scoreEl = document.getElementById("score");
+const giveUpBtn = document.getElementById("giveUp");
+const restartBtn = document.getElementById("restartBtn");
+
+let found = 0;
+
 window.onload = () => {
   loadCSVData();
 };
@@ -306,107 +545,149 @@ function loadCSVData() {
 
   function checkIfReady() {
     if (filesLoaded === 2) {
-      setMode('airport'); // or you can show a welcome screen first
+      setMode('airline');
     }
   }
 }
 
 function setMode(newMode) {
   mode = newMode;
-  score = 0;
-  totalQuestions = 0;
-  // populate the weights arrays
-  weights_airports = new Array(airports.length).fill(1);
-  weights_airlines = new Array(airlines.length).fill(1);
-  console.log(airports);
-  console.log(weights_airports);
-  updateScoreboard();
-  askQuestion();
-}
-
-function askQuestion() {
-  if ((mode === 'airport' && airports.length === 0) ||
-      (mode === 'airline' && airlines.length === 0) ||
-      (mode === 'mixed' && (airports.length === 0 || airlines.length === 0))) {
-    document.getElementById('question').textContent = "Loading data...";
-    return;
+  if (mode === 'airline'){
+    shuffle(airlines);
+    TOTAL = airlines.length;
+  } else if (mode === 'airport'){
+    shuffle(airports);
+    TOTAL = airports.length;
   }
+  scoreEl.textContent = `0/${TOTAL}`;
+  buildTables();
+  input.focus();
+}
 
-  let question = {};
-
-  if (mode === 'airport') {
-    question = randomAirportQuestion();
-  } else if (mode === 'airline') {
-    question = randomAirlineQuestion();
-  } else if (mode === 'mixed') {
-    question = Math.random() > 0.5 ? randomAirportQuestion() : randomAirlineQuestion();
+function shuffle(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
   }
-
-  currentQuestion = question;
-  document.getElementById('question').textContent = question.prompt;
-  document.getElementById('answer').value = '';
-  document.getElementById('feedback').textContent = '';
+  return array;
 }
 
-function randomAirportQuestion() {
-  // const item = airports[Math.floor(Math.random() * airports.length)];
-  const item = my_chance.weighted(airports, weights_airports); // obtain weighted random generated choice
-  const idx = airports.indexOf(item);
-  // update the weights
-  weights_airports[idx] = weights_airports[idx] * 0.5;
-  console.log(weights_airports);
-  return {
-    prompt: `What is the location for code: ${item.Code}?`,
-    answer: item.Location.trim().toLowerCase(),
-    alt1: item.Alt1.trim().toLowerCase(),
-    alt2: item.Alt2.trim().toLowerCase(),
-    notes: ''
-  };
-}
+function buildTables() {
+  container.innerHTML = "";
+  cells = [];
+  if (mode === 'airline'){
+    const perColumn = Math.ceil(airlines.length / 3);
+    for (let c = 0; c < 3; c++) {
+      const table = document.createElement("table");
+      table.innerHTML = `
+        <thead>
+          <tr>
+            <th>Airline Code</th>
+            <th>Callsigns</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      `;
 
-function randomAirlineQuestion() {
-  // const item = airlines[Math.floor(Math.random() * airlines.length)];
-  const item = my_chance.weighted(airlines, weights_airlines); // obtain weighted random generated choice
-  const idx = airlines.indexOf(item);
-  // update the weights
-  weights_airlines[idx] = weights_airlines[idx] * 0.5;
-  console.log(weights_airlines);  
-  return {
-    prompt: `RTF CALLSIGN for operator: ${item.Designator}?`,
-    answer: item['RTF Callsign'].trim().toLowerCase(),
-    alt1: null,
-    alt2: null,
-    notes: item.Operator.trim().toLowerCase()
-  };
-}
+      const tbody = table.querySelector("tbody");
 
-function submitAnswer() {
-  const userAnswer = document.getElementById('answer').value.trim().toLowerCase();
-  totalQuestions++;
-  const dist = leven();
-  // leveshtein distance tolerance between the correct answer and the given input
-  if ((dist(userAnswer, currentQuestion.answer) <= 1) || (currentQuestion.alt1 && dist(userAnswer, currentQuestion.alt1) <= 1) || (currentQuestion.alt2 && dist(userAnswer, currentQuestion.alt2) <= 1)) {
-    score++;
-    document.getElementById('feedback').textContent = `✅ Correct! (🛬 ${currentQuestion.notes})`;
-    document.getElementById('feedback').style.color = "lime";
-  } else {
-    document.getElementById('feedback').textContent = `❌ Wrong. Correct: ${currentQuestion.answer.toUpperCase()} (🛬 ${currentQuestion.notes})`;
-    document.getElementById('feedback').style.color = "red";
+      for (let r = 0; r < perColumn; r++) {
+        const item = airlines[c * perColumn + r];
+        if (!item) continue;
+
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td class="designator">${item.Designator}</td>
+          <td class="callsign hidden" data-answer="${item['RTF Callsign'].trim().toLowerCase()}">
+            ${item['RTF Callsign']}
+          </td>
+        `;
+        tbody.appendChild(tr);
+        cells.push(tr.querySelector(".callsign"));
+      }
+      container.appendChild(table);
+    }
+  } else if (mode === 'airport'){
+    const perColumn = Math.ceil(airports.length / 3);
+    for (let c = 0; c < 3; c++) {
+      const table = document.createElement("table");
+      table.innerHTML = `
+        <thead>
+          <tr>
+            <th>Location Code</th>
+            <th>Location Name</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      `;
+
+      const tbody = table.querySelector("tbody");
+
+      for (let r = 0; r < perColumn; r++) {
+        const item = airports[c * perColumn + r];
+        if (!item) continue;
+
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td class="aerodrome code">${item.Code}</td>
+          <td class="location name hidden" data-answer="${item.Location.trim().toLowerCase()}" data-alt1="${item.Alt1.trim().toLowerCase()}" data-alt2="${item.Alt2.trim().toLowerCase()}">
+            ${item.Location}
+          </td>
+        `;
+        tbody.appendChild(tr);
+        cells.push(tr.querySelector(".location"));
+      }
+      container.appendChild(table);
+    }
   }
-
-  updateScoreboard();
-  setTimeout(askQuestion, 2000); // wait 2.0s before next
 }
-// allows submission using the Enter key
-document.getElementById('answer').addEventListener('keydown', function (event) {
-  if (event.key === 'Enter') {
-    submitAnswer();
+
+input.addEventListener("keydown", e => {
+  if (e.key !== "Enter") return;
+
+  const guess = input.value.trim().toLowerCase();
+  input.value = "";
+  if (!guess) return;
+  cells.forEach(cell => {
+  const dist = leven(); // init leven function
+  if (mode === 'airline'){ 
+    if (dist(guess, cell.dataset.answer) <= 1 && cell.classList.contains("hidden")) {
+      cell.classList.remove("hidden");
+      found++;
+    }
+  } else if (mode === 'airport') {
+    if (dist(guess, cell.dataset.answer) <= 1 || (cell.dataset.alt1 && dist(guess, cell.dataset.alt1) <= 1) || (cell.dataset.alt2 && dist(guess, cell.dataset.alt2) <= 1) && cell.classList.contains("hidden")) {
+      cell.classList.remove("hidden");
+      
+      found++;
+    }    
   }
+  });
+  
+  scoreEl.textContent = `${found}/${TOTAL}`;
 });
-function updateScoreboard() {
-  document.getElementById('score').textContent = score;
-  document.getElementById('questions').textContent = totalQuestions;
+
+/* ===== GIVE UP ===== */
+function giveUp() {
+  cells.forEach(cell => {
+    if (cell.classList.contains("hidden")) {
+      cell.classList.remove("hidden");
+      cell.classList.add("missed");
+    }
+  });
 }
+
+/* ===== RESTART ===== */
+function restart() {
+  found = 0;
+  scoreEl.textContent = `0/${TOTAL}`;
+  input.value = "";
+  input.focus();
+  buildTables();
+}
+
+giveUpBtn.onclick = giveUp;
+restartBtn.onclick = restart;
 
 `levenshtein function from [Gustaf Andersson](https://github.com/gustf/js-levenshtein).
 MIT License
@@ -531,3 +812,8 @@ function leven()
     return dd;
   };
 }
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+</body>
+</html>
