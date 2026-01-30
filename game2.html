@@ -169,10 +169,17 @@
     /* .top {
       grid-template-columns: 1fr;
     } */
-    button {
-      padding: 0.35rem 0.5rem;
-      font-size: 0.8rem;
-      flex-wrap: nowrap;
+    .input-box input {
+      font-size: 12px;
+      min-width: 50px;
+    } 
+    .button1 {
+      padding: 10px 10px;
+      font-size: 0.65em;
+    }
+    .button2 {
+      padding: 10px 10px;
+      font-size: 0.65em;
     }
     .stats {
       text-align: left;
@@ -215,8 +222,8 @@
     <div class="input-row">
       <input id="answerInput" autocomplete="off" placeholder="Type your answer and press enter...">
       <div id="mode-select">
-        <button onclick="setMode('airline')">Airlines</button>
-        <button onclick="setMode('airport')">Airports</button>
+        <button class="button1" onclick="setMode('airline')">Airlines</button>
+        <button class="button2" onclick="setMode('airport')">Airports</button>
       </div>
     </div>
   </div>
