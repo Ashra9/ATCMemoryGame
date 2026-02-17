@@ -112,7 +112,6 @@ EBBR,Belgium Brussels,Brussels,
 EDDB,Berlin Brandenburg Int'l,Berlin,
 EDDF,Frankfurt Int'l,Frankfurt,
 EDDH,Hamburg,,
-EDDM,Munich Int'l,Munich,
 ELLX,Luxembourg,,
 HAAB,Addis Ababa Bole Int'l,Addis Ababa,
 HECA,Cairo Int'l,Cairo,
@@ -136,7 +135,10 @@ RCKH,Kaohsiung,,
 KJFK,New York JFK International Airport,New York,JFK
 CYVR,Vancouver,,
 OMSJ,Sharjah,,
-WIOO,Pontianak,,`
+WIOO,Pontianak,,
+ZSFZ,Fuzhou,,
+RKSS,Seoul Gimpo,Gimpo,
+RJTY,Yokota Air Base,`
 
 const acarrier_rtf = `Operator,Designator,RTF Callsign
 Aero Dili,DTL,AERO DILI
@@ -281,7 +283,8 @@ Phenix Jet (Private Charter),RKS,ROCKSTAR
 Cebgo,SRQ,BLUE JAY
 Air Zimbabwe,AZW,AIR ZIMBABWE
 GX Airlines (Guangxi Beibu Gulf Airlines),CBG,GREEN CITY
-Shanghai Airlines,CSH,SHANGHAI AIR`
+Shanghai Airlines,CSH,SHANGHAI AIR
+Kalitta Air,CKS,CONNIE`
 
 window.onload = () => {
   loadCSVData();
