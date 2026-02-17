@@ -668,15 +668,12 @@ input.addEventListener("keydown", e => {
   const dist = leven(); // init leven function
   if (mode === 'airline'){ 
     if (dist(guess, cell.dataset.answer) <= 1 && cell.classList.contains("hidden")) {
-      console.log(cell.classList);
       cell.classList.remove("hidden");
       found++;
     }
   } else if (mode === 'airport') {
     if ((dist(guess, cell.dataset.answer) <= 1 || (cell.dataset.alt1 && dist(guess, cell.dataset.alt1) <= 1) || (cell.dataset.alt2 && dist(guess, cell.dataset.alt2) <= 1)) && cell.classList.contains("hidden")) {
-      console.log(cell.classList);
       cell.classList.remove("hidden");
-      
       found++;
     }    
   }
