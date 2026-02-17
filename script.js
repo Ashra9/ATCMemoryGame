@@ -138,7 +138,7 @@ OMSJ,Sharjah,,
 WIOO,Pontianak,,
 ZSFZ,Fuzhou,,
 RKSS,Seoul Gimpo,Gimpo,
-RJTY,Yokota Air Base,`
+RJTY,Yokota Air Base,,`
 
 const acarrier_rtf = `Operator,Designator,RTF Callsign
 Aero Dili,DTL,AERO DILI
