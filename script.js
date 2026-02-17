@@ -110,7 +110,6 @@ FAOR,Johannesburg OR Tambo International Airport,Johannesburg,OR Tambo Internati
 EBLG,Belgium Liege,Liege,
 EBBR,Belgium Brussels,Brussels,
 EDDB,Berlin Brandenburg Int'l,Berlin,
-EDDF,Frankfurt Int'l,Frankfurt,
 EDDH,Hamburg,,
 ELLX,Luxembourg,,
 HAAB,Addis Ababa Bole Int'l,Addis Ababa,
