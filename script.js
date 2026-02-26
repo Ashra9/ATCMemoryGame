@@ -137,7 +137,12 @@ OMSJ,Sharjah,,
 WIOO,Pontianak,,
 ZSFZ,Fuzhou,,
 RKSS,Seoul Gimpo,Gimpo,
-RJTY,Yokota Air Base,,`
+RJTY,Yokota Air Base,,
+WSAT,Tengah,,
+ZSQZ,Quanzhou,,
+WIDL,Letung,,
+WIDM,Matak,,
+WIDO,Ranai-Natuna,Natuna,Ranai`
 
 const acarrier_rtf = `Operator,Designator,RTF Callsign
 Aero Dili,DTL,AERO DILI
@@ -283,7 +288,10 @@ Cebgo,SRQ,BLUE JAY
 Air Zimbabwe,AZW,AIR ZIMBABWE
 GX Airlines (Guangxi Beibu Gulf Airlines),CBG,GREEN CITY
 Shanghai Airlines,CSH,SHANGHAI AIR
-Kalitta Air,CKS,CONNIE`
+Kalitta Air,CKS,CONNIE
+ASL Airlines Belgium,TAY,QUALITY
+Loong Air,CDC,LOONG AIR
+Virgin Australia Airlines,VOZ,VELOCITY`
 
 window.onload = () => {
   loadCSVData();
