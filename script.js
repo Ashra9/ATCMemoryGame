@@ -142,7 +142,9 @@ WSAT,Tengah,,
 ZSQZ,Quanzhou,,
 WIDL,Letung,,
 WIDM,Matak,,
-WIDO,Ranai-Natuna,Natuna,Ranai`
+WIDO,Ranai-Natuna,Natuna,Ranai
+WIDT,Tanjung Balai Karimun,Karimun,
+WIDS,Dabo Airport,Dabo,`
 
 const acarrier_rtf = `Operator,Designator,RTF Callsign
 Aero Dili,DTL,AERO DILI
@@ -291,7 +293,9 @@ Shanghai Airlines,CSH,SHANGHAI AIR
 Kalitta Air,CKS,CONNIE
 ASL Airlines Belgium,TAY,QUALITY
 Loong Air,CDC,LOONG AIR
-Virgin Australia Airlines,VOZ,VELOCITY`
+Virgin Australia Airlines,VOZ,VELOCITY
+Ascend Airways Malaysia,AYG,ASTRA
+Susi Air,SQS,SKYQUEEN`
 
 window.onload = () => {
   loadCSVData();
