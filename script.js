@@ -144,7 +144,8 @@ WIDL,Letung,,
 WIDM,Matak,,
 WIDO,Ranai-Natuna,Natuna,Ranai
 WIDT,Tanjung Balai Karimun,Karimun,
-WIDS,Dabo Airport,Dabo,`
+WIDS,Dabo Airport,Dabo,
+FJDC,Diego Garcia Naval Support Facility,Diego Garcia,`
 
 const acarrier_rtf = `Operator,Designator,RTF Callsign
 Aero Dili,DTL,AERO DILI
@@ -295,7 +296,8 @@ ASL Airlines Belgium,TAY,QUALITY
 Loong Air,CDC,LOONG AIR
 Virgin Australia Airlines,VOZ,VELOCITY
 Ascend Airways Malaysia,AYG,ASTRA
-Susi Air,SQS,SKYQUEEN`
+Susi Air,SQS,SKYQUEEN
+Jiangxi Air,CJX,AIR CRANE`
 
 window.onload = () => {
   loadCSVData();
